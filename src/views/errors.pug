@@ -1,0 +1,14 @@
+extends layout
+
+block head
+  title Errors
+  style.
+    .error {
+      text-align: center;
+    }
+block content
+  .error
+    h1 Errors:
+        each error in errors
+            .error
+                #{error}

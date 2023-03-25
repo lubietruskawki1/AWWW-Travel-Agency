@@ -1,0 +1,41 @@
+extends layout
+
+block head
+  title Wspaniała wycieczka
+  link(rel='stylesheet', type="text/css", href='/styles/style-trip.css')
+block content
+  .main_trip
+    if success
+      .success
+        h1 #{success}
+    img.trip_image(src=trip.img_source, alt=trip.img_alt)
+    #main_description.trip_description
+      h1 #{trip.name}
+      | #{trip.short_description}
+    .trip_description
+      h2 Nagłówek z tytułem
+      | Tu kolejny fragment tekstu. Może się składać z kilku akapitów. W pierwszej wersji tekst na pewno nie będzie opływał obrazka, ale to poprawimy później.
+    .trip_description
+      h2 Jeszcze jeden nagłówek
+      | I kolejne informacje o wycieczce. Trzeba się wysilić i wymyślić własne.
+    #relevant_information.trip_description
+      h2 Istotne informacje
+      ul.relevant_information_list
+        li termin wycieczki: #{trip.start_date.toLocaleDateString("en-GB")} - #{trip.end_date.toLocaleDateString("en-GB")}
+        li temperatury w miejscu docelowym: takie w sam raz
+        li warto zabrać: trochę ubrań na zmianę
+        li cena wycieczki to: #{trip.price}
+    #tour_schedule.trip_description
+      h2 Program wycieczki
+      ol.tour_schedule_list
+        li Odwiedziny w miejscu
+        li Obiad
+        - let name_lowercase = trip.name.toLowerCase();
+        li Wyprawa na #{name_lowercase}
+    #tickets_left.trip_description
+      h3 Liczba dostępnych biletów: #{trip.tickets_left}
+    .buttons
+      - const index = trips.findIndex(t => {return t.id === trip.id;});
+      - const page = Math.floor(index / 3) + 1;
+      a.custom_button(href='/strona-glowna/' + page) &lt; Powrót
+      a.custom_button(href='/formularz/' + `${trip.id}`) Zarezerwuj &gt;

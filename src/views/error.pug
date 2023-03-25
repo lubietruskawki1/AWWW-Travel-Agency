@@ -1,0 +1,14 @@
+extends layout
+
+block head
+  title Error
+  style.
+    .error {
+      text-align: center;
+    }
+block content
+  .error
+    if isNaN(error)
+      h1 Error: #{error}
+    else
+      h1 Error #{error}

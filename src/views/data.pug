@@ -1,0 +1,11 @@
+extends layout
+
+block head
+  title Data
+  style.
+    .state {
+      text-align: center;
+    }
+block content
+  .state
+    h1 #{server_state}

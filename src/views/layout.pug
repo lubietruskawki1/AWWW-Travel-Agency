@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    link(rel='icon', type='image/x-icon', href='/images/favicon.ico?v=1')
+    link(rel='stylesheet', type="text/css", href='/styles/style.css')
+    block head
+  body
+    nav
+      img.logo_image(src='https://cdn.logojoy.com/wp-content/uploads/20200727141520/industrypage.png', alt='Logo')
+      ul.nav_list
+        li(class=(name === 'homepage' ? 'active' : undefined))
+          a(href='/strona-glowna' title='Idź do strony głównej') Strona główna
+        li(class=(name === 'trip' ? 'active' : undefined))
+          a(href='/wycieczka' title='Idź do strony wycieczki') Wycieczka
+        li(class=(name === 'form' ? 'active' : undefined))
+          a(href='/formularz') Rezerwacja
+    block content
+    footer
+      .name Biuro podróży, 2022
+      ul.footer_list
+        li
+          a(href='/strona-glowna') O firmie
+        li
+          a(href='/strona-glowna') Polityka prywatności
+        li
+          a(href='/strona-glowna') Kontakt
+    block modules

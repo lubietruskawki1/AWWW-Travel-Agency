@@ -1,0 +1,85 @@
+//- Zadanie 1
+
+extends layout
+
+block head
+  title Formularz rezerwacji
+  link(rel='stylesheet', type="text/css", href='/styles/style-registration.css')
+block content
+  .main_form
+    //- if errors
+    //-   each error in errors
+    //-     p(style='color:red') #{error.msg}
+    h1 #{trip.name}
+    .form_trip_description
+      | #{trip.short_description}
+    .form_trip_tickets_left  
+      h3 Liczba dostępnych biletów: #{trip.tickets_left}
+    form.form_user(novalidate='', method='POST')
+      h2 Dane osobowe
+      - 
+        let first_name_error = null;
+        let surname_error = null;
+        let mail_error = null;
+        let registrations_error = null;
+      if errors
+        -
+          for (let i = 0; i < errors.length; i++) {
+            switch (errors[i].param) {
+              case 'first_name':
+                first_name_error = first_name_error || errors[i].msg;
+                break;
+              case 'surname':
+                surname_error = surname_error || errors[i].msg;
+                break;
+              case 'mail':
+                mail_error = mail_error || errors[i].msg;
+                break;
+              case 'registrations':
+                registrations_error = registrations_error || errors[i].msg;
+                break;
+            }
+          }
+      .form_user_element
+        label(for='first_name')
+          .label_name.required Imię:
+          .input_and_error
+            input#first_name(type='text', name='first_name', required='')
+            span.error(aria-live='polite')
+              if first_name_error
+                .active_error #{first_name_error}
+      .form_user_element
+        label(for='surname')
+          .label_name.required Nazwisko:
+          .input_and_error
+            input#surname(type='text', name='surname', required='')
+            span.error(aria-live='polite')
+              if surname_error
+                .active_error #{surname_error}
+      .form_user_element
+        label(for='mail')
+          .label_name.required E-mail:
+          .input_and_error
+            input#mail(type='email', name='mail', required='')
+            span.error(aria-live='polite')
+              if mail_error
+                .active_error #{mail_error}
+      .form_user_element
+        label(for='registrations')
+          .label_name.required Liczba zgłoszeń:
+          .input_and_error
+            input#registrations(type='number', name='registrations', required='')
+            span.error(aria-live='polite')
+              if registrations_error
+                .active_error #{registrations_error}
+      button.form_user_submit Zatwierdź
+      .modal
+        .modal_content
+          .modal_header_and_close
+            h2 Wprowadzone dane:
+            span.close &times;
+          .modal_elements_parent
+            .modal_elements
+            button.modal_submit Wyślij
+block modules
+  script(type='module', src='/modules/registration-module.mjs')

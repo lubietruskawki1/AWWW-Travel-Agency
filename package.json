@@ -1,0 +1,40 @@
+{
+  "name": "travel-agency",
+  "version": "1.0.0",
+  "main": "app.mjs",
+  "watch": {
+    "eslint": {
+      "extensions": "js,mjs",
+      "ignore": "node_modules",
+      "runOnChangeOnly": true,
+      "clearBuffer": true
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.mjs",
+    "develop": "npm-watch eslint",
+    "eslint": "bash eslint-test.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.1",
+    "http-serve": "^1.0.1",
+    "npm-watch": "^0.11.0",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "pug": "^3.0.2",
+    "sequelize": "^6.19.0"
+  },
+  "description": "",
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.15"
+  }
+}

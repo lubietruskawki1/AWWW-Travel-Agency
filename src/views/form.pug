@@ -1,0 +1,118 @@
+extends layout
+
+block head
+  title Formularz rezerwacji
+  link(rel='stylesheet', type="text/css", href='/styles/style-form.css')
+block content
+  .main_form
+    form.form_trip(novalidate='')
+      h1 #{trip.name}
+      .form_trip_description
+        | #{trip.short_description}
+      .form_trip_tickets_left  
+        h3 Liczba dostępnych biletów: #{trip.tickets_left}
+      table.type_table
+        tr
+          th
+          th Rodzaj biletu
+          th Cena
+        tr
+          td
+            input#adult(type='radio', name='trip', value='adult', required='')
+          td#td_label
+            label#adult_label(for='adult') Normalny
+          td#adult_price #{trip.price}
+        tr
+          td
+            input#student(type='radio', name='trip', value='student')
+          td#td_label
+            label#student_label(for='student') Student
+          - let student_price = Math.ceil(trip.price / 3);
+          td#student_price #{student_price}
+        tr
+          td
+            input#child(type='radio', name='trip', value='child')
+          td#td_label
+            label#child_label(for='child') Dziecko do lat 12
+          - let child_price = Math.ceil(trip.price / 2);
+          td#child_price #{child_price}
+      .form_amount
+        .details_amount
+          label(for='amount') Ilość:
+          input#amount(type='number', name='amount', min='1', required='')
+        button.trip_add Dodaj
+    .summary
+      .summary_picks
+        h2 Podsumowanie
+        table.summary_table
+          tr
+            th Opcja
+            th Ilość
+            th Cena
+      .sum
+        | Suma:
+        .sum_value 0
+      .registrations
+        | Liczba zgłoszeń:
+        .registrations_value 0
+    form.form_user(novalidate='')
+      h2 Dane osobowe
+      .form_user_element
+        label(for='first_name')
+          .label_name.required Imię:
+          .input_and_error
+            input#first_name(type='text', name='first_name', required='')
+            span.error(aria-live='polite')
+      .form_user_element
+        label(for='surname')
+          .label_name.required Nazwisko:
+          .input_and_error
+            input#surname(type='text', name='surname', required='')
+            span.error(aria-live='polite')
+      .form_user_element
+        label(for='date_of_birth')
+          .label_name.required Data urodzenia:
+          .input_and_error
+            input#date_of_birth(type='date', name='date_of_birth', required='')
+            span.error(aria-live='polite')
+      .form_user_element
+        label(for='address')
+          .label_name.non_required Adres:
+          .input_and_error
+            input#address(type='text', name='address')
+            span.error(aria-live='polite')
+      .form_user_element
+        label(for='postal_code')
+          .label_name.non_required Kod pocztowy:
+          .input_and_error
+            input#postal_code(type='text', name='postal_code', pattern='[0-9]{2}-[0-9]{3}')
+            span.error(aria-live='polite')
+      .form_user_element
+        label(for='locality')
+          .label_name.non_required Miejscowość:
+          .input_and_error
+            input#locality(type='text', name='locality')
+            span.error(aria-live='polite')
+      .form_user_element
+        label(for='phone')
+          .label_name.required Telefon kontaktowy:
+          .input_and_error
+            input#phone(type='tel', name='phone', pattern='([0-9]{3}-[0-9]{3}-[0-9]{3})||([0-9]{3}[0-9]{3}[0-9]{3})', required='')
+            span.error(aria-live='polite')
+      .form_user_element
+        label(for='mail')
+          .label_name.required E-mail:
+          .input_and_error
+            input#mail(type='email', name='mail', required='', minlength='8')
+            span.error(aria-live='polite')
+      button.form_user_submit Zatwierdź
+      .modal
+        .modal_content
+          .modal_header_and_close
+            h2 Wprowadzone dane:
+            span.close &times;
+          .modal_elements_parent
+            .modal_elements
+            button.modal_submit Wyślij
+block modules
+  script(type='module', src='/modules/form-module.mjs')

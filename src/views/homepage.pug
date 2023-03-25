@@ -1,0 +1,51 @@
+extends layout
+
+include mixins/pagination
+
+block head
+  title Strona główna
+  link(rel='stylesheet', type="text/css", href='/styles/style-homepage.css')
+block content
+  .main_homepage
+    .left
+      - for (let i = 3 * (page - 1); i < 3 * (page - 1) + 3; i++)
+        - let trip = trips[i]
+        .trip
+          img.trip_image_homepage(src=trip.img_source, alt=trip.img_alt)
+          h1 #{trip.name}
+          p.description #{trip.short_description}
+          p.price Cena: #{trip.price}
+          p.reserve
+            a(href='/wycieczka/' + `${trip.id}`) Zarezerwuj &gt;&gt;
+      +pagination(Math.ceil(trips.length / 3), page)
+    .right
+      .promotions
+        h2 Promocje
+        .promotion
+          h3 Góry wysokie
+          p.date 1-31 lutego
+          p.reserve_promotion
+          a(href='/wycieczka') Rezerwuj &gt;&gt;
+        .promotion
+          h3 Inne miejsce
+          p.date 17-18 kwietnia
+          p.reserve_promotion
+          a(href='/wycieczka') Rezerwuj &gt;&gt;
+        .promotion
+          h3 Też gdzie&sacute;
+          p.date w listopadzie
+          p.reserve_promotion
+          a(href='/wycieczka') Rezerwuj &gt;&gt;
+        .promotion
+          h3 Warszawa
+          p.date ciągle
+          p.reserve_promotion
+          a(href='/wycieczka') Rezerwuj &gt;&gt;
+      .tips
+        h2 Porady
+        p.tip
+          a(href='/strona-glowna') Co zabrać na wycieczkę?
+        p.tip
+          a(href='/strona-glowna') Kiedy najlepiej wyjechać?
+        p.tip
+          a(href='/strona-glowna') Jakie buty są najwygodniejsze?

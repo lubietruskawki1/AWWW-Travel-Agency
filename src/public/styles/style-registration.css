@@ -1,0 +1,306 @@
+.main_form {
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.main_form h1 {
+    margin: 0;
+}
+
+.form_trip_description {
+    width: 22em;
+    margin: 10px auto 30px;
+}
+
+.form_trip_tickets_left {
+    width: 22em;
+    margin: 0 auto 15px;
+}
+
+.form_trip_tickets_left h3 {
+    margin: 0;
+}
+
+th,
+td {
+    padding: 6px;
+}
+
+.form_trip h2 {
+    margin-bottom: 10px;
+}
+
+.type_table {
+    margin-top: 10px;
+}
+
+.type_table th,
+.type_table td {
+    width: 4em;
+}
+
+#td_label {
+    width: 10em;
+}
+
+.form_amount {
+    margin: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.details_amount label,
+.details_amount input {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.details_amount input:focus {
+    outline: none;
+}
+
+.summary {
+    margin: 10px;
+}
+
+.summary h2 {
+    margin-top: 0;
+}
+
+.summary_picks {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 10px 0;
+    margin-bottom: -1px;
+    width: 40em;
+}
+
+.summary_table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.summary_table th,
+.summary_table td {
+    width: 15em;
+}
+
+.sum,
+.registrations {
+    border: 1px solid black;
+    padding: 10px;
+    margin-top: 0;
+    width: 200px;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: left;
+}
+
+.sum {
+    margin-bottom: -1px;
+}
+
+.sum_value,
+.registrations_value {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.form_user {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto 0;
+    width: 35%;
+}
+
+.form_user_element {
+    margin: 10px 0;
+}
+
+.form_user label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.label_name {
+    flex-basis: 35%;
+    text-align: right;
+    display: inline block;
+    padding: 4px 0;
+    width: 100%;
+}
+
+.non_required::after {
+    content: "";
+    padding-right: 12px;
+}
+
+.required:after {
+    content: " *";
+    color: #E50000;
+}
+
+.input_and_error {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form_user input {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1.5px solid black;
+    margin: 0;
+    font-family: inherit;
+    font-size: 90%;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    width: 100%;
+    outline: none;
+}
+
+.form_user input:invalid {
+    border-color: #E43E3E;
+    background-color: #FFDBDB;
+}
+
+.error {
+    padding: 0;
+    font-size: 80%;
+    color: white;
+    background-color: #E43E3E;
+    border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
+}
+
+.active_error {
+    padding: 10px;
+}
+
+.form_user_submit {
+    margin: 25px 0 10px auto;
+    width: 110px;
+    padding: 10px;
+    border: 2px solid black;
+    background-color: #FF7AB4;
+    text-align: center;
+    box-shadow: 2px 2px 2px black;
+    text-decoration: none;
+}
+
+.form_user_submit:hover {
+    background-color: #FF4E9B;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal_content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal_header_and_close {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.modal_header_and_close h2 {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.close {
+    color: #FF7AB4;
+    text-align: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+}
+
+.close:hover
+.close:focus {
+    color: #FF4E9B;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal_elements_parent {
+    width: 100%;
+    align-items: center;
+}
+
+.modal_elements {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    border: 1px solid #FF7AB4;
+    margin: 0 auto;
+}
+
+.modal_element {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+}
+
+.modal_label {
+    text-align: right;
+    display: inline block;
+    width: 100%;
+    padding-right: 10px;
+}
+
+.modal_input {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.modal_submit {
+    margin: 25px 0 10px 0;
+    width: 110px;
+    padding: 10px;
+    border: 2px solid black;
+    background-color: #FF7AB4;
+    text-align: center;
+    box-shadow: 2px 2px 2px black;
+    text-decoration: none;
+}
+
+.modal_submit:hover,
+.modal_submit:focus {
+    background-color: #FF4E9B;
+    cursor: pointer;
+}

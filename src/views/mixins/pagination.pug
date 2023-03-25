@@ -1,0 +1,16 @@
+mixin pagination(pages, current_page)
+    style
+      include pagination-style.css
+    .pagination
+        .arrow
+          if (current_page > 1)
+            - const prev_page = current_page - 1;
+            a(href='/strona-glowna/' + prev_page title='Poprzednia strona').arrow_display ◀
+        ul.pagination_list
+          - for (let i = 1; i <= pages; i++)
+            li(class=(i == current_page ? 'active_page' : undefined))
+              a(href='/strona-glowna/' + i title=(i == current_page ? 'Bieżąca strona ' + i : 'Idź do strony ' + i))= i
+        .arrow
+          if (current_page < pages)
+            - let next_page = Number(current_page) + 1;
+            a(href='/strona-glowna/' + next_page title='Następna strona').arrow_display ▶
